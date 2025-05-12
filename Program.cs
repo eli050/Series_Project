@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.Design;
+using System.Diagnostics.Metrics;
 class Program()
 {
     static void Main(string[] args)
@@ -21,13 +22,14 @@ class Program()
         bool validationList(List<string> list)
 
         {
-            return true;
+            bool checker = true;
+            return checker;
         }
 
         List<int> changeLStrToLInt(List<string> list)
         {
-            List<int> ints = new List<int>();
-            return ints;
+            List<int> intList = new List<int>();
+            return intList;
         }
 
         // Prints the menu
@@ -45,39 +47,91 @@ class Program()
                 "\ni. Print the sum of the total elements in the series" +
                 "\nj. Exit");
         }
-        List<int> reversedList(List<int> list)
+        List<int> reversedList(List<int> listNum)
         {
-            return list;
+            List<int> reversList = new List<int>();
+            for (int i = countVal(listNum); i > 0; i--)
+            {
+                reversList.Add(i);
+            }
+            return reversList;
         }
 
-        List<int> soortedList(List<int> list)
+        List<int> soortedList(List<int> listNum)
         {
-            return list;
+            bool checker = true;
+            List<int> sortList = new List<int>();
+            for (int i = 1; i < countVal(listNum); i++)
+            {
+                for (int j = 0; j < countVal(listNum) - i ; j++)
+                {
+                    if (listNum[j] < listNum[j +1])
+                    {
+                        int temp = listNum[j];
+                        listNum[j] = listNum[j + 1];
+                        listNum[j + 1] = temp;
+                        checker = false;
+
+                    }
+                }
+                if (checker)
+                {
+                    return listNum;
+                }
+            }
+            return listNum;
         }
 
-        int maxVal(List<int> list)
+
+        int maxVal(List<int> listNum)
         {
-            return 0;
+            int max = listNum[0];
+            for (int i = 1; i < countVal(listNum); i++)
+            {
+                if (listNum[i] > max)
+                    max = listNum[i];
+            }
+            return max;
+
         }
 
-        int minVal(List<int> list)
+        int minVal(List<int> listNum)
         {
-            return 0;
+            int min = listNum[0];
+            for (int i = 1; i < countVal(listNum); i++)
+            {
+                if (listNum[i] < min)
+                {
+                    min = listNum[i];
+                }
+            }
+            return min;
         }
 
-        int avrageValues(List<int> list)
+        int avrageValues(List<int> listNum)
         {
-            return 0;
+            int avr = sumAllVal(listNum) / countVal(listNum);
+            return avr;
         }
 
-        int countVal(List<int> list)
+        int countVal(List<int> listNum)
         {
-            return 0;
+            int counter = 0;
+            foreach (int item in listNum)
+            {
+                counter++;
+            }
+            return counter;
         }
 
-        int sumAllVal(List<int> list)
-        {
-            return 0;
+        int sumAllVal(List<int> listNum)
+        {   
+            int sum = 0;
+            foreach(int num in listNum)
+            {
+                sum += num;
+            }
+            return sum;
         }
 
 
