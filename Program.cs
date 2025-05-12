@@ -33,6 +33,10 @@ class Program()
         List<int> changeLStrToLInt(List<string> list)
         {
             List<int> intList = new List<int>();
+            foreach (string str in list)
+            {
+                intList.Add(int.Parse(str));
+            }
             return intList;
         }
 
