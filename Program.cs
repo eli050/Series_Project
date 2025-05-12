@@ -4,7 +4,7 @@ class Program()
 {
     static void Main(string[] args)
     {
-
+        
         // Menu management system
         void menu()
         {
@@ -26,6 +26,13 @@ class Program()
 
         {
             bool checker = true;
+            foreach (string str in list)
+            {
+                if (!int.TryParse(str, out int value))
+                {
+                    checker = false; break;
+                }
+            }
             return checker;
         }
 
