@@ -3,17 +3,19 @@ class Program()
 {
     static void Main(string[] args)
     {
-        printMenu();
-
+        
         void menu()
         {
             List<int> series = new List<int>();
         }
 
+        //Converts a string to a list of strings
         List<string> changeStrToLstr(string str)
         {
-            List<string> list = new List<string>();
-            return list;
+            List<string> stringList = new List<string>();
+            string[] tempArr = str.Split();
+            stringList = tempArr.ToList();
+            return stringList;
         }
 
         bool validationList(List<string> list)
