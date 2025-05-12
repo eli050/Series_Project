@@ -4,11 +4,26 @@ class Program()
 {
     static void Main(string[] args)
     {
-        
-        // Menu management system
         void menu()
         {
             List<int> series = new List<int>();
+        }
+
+        // Receiving the series of numbers from a user
+        List<int> inputSeries()
+        {
+            List<string> list;
+            List<int> input = new List<int>();
+            bool checker;
+            do
+            {
+                Console.WriteLine("enter a series numbers: ");
+                list = changeStrToLstr(Console.ReadLine()!);
+                checker = validationList(list);
+            }
+            while (!checker);
+            input = changeLStrToLInt(list);
+            return input;
         }
 
         //Converts a string to a list of strings
