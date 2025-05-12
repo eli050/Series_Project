@@ -4,7 +4,8 @@ class Program()
 {
     static void Main(string[] args)
     {
-        
+
+        // Menu management system
         void menu()
         {
             List<int> series = new List<int>();
@@ -19,6 +20,8 @@ class Program()
             return stringList;
         }
 
+        // Goes through a list of strings and checks
+        // that they are all numbers
         bool validationList(List<string> list)
 
         {
@@ -26,6 +29,7 @@ class Program()
             return checker;
         }
 
+        // Converts a list of strings to a list of numbers
         List<int> changeLStrToLInt(List<string> list)
         {
             List<int> intList = new List<int>();
@@ -47,6 +51,17 @@ class Program()
                 "\ni. Print the sum of the total elements in the series" +
                 "\nj. Exit");
         }
+
+        // Prints all elements in a list.
+        void printVal(List<int> listNum)
+        {
+            foreach (int item in listNum)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
+        // Returns the same list in reverse
         List<int> reversedList(List<int> listNum)
         {
             List<int> reversList = new List<int>();
@@ -57,7 +72,8 @@ class Program()
             return reversList;
         }
 
-        List<int> soortedList(List<int> listNum)
+        // Returns a sorted list
+        List<int> sortedList(List<int> listNum)
         {
             bool checker = true;
             List<int> sortList = new List<int>();
@@ -65,7 +81,7 @@ class Program()
             {
                 for (int j = 0; j < countVal(listNum) - i ; j++)
                 {
-                    if (listNum[j] < listNum[j +1])
+                    if (listNum[j] > listNum[j +1])
                     {
                         int temp = listNum[j];
                         listNum[j] = listNum[j + 1];
@@ -82,7 +98,7 @@ class Program()
             return listNum;
         }
 
-
+        // Returns the max number in a list.
         int maxVal(List<int> listNum)
         {
             int max = listNum[0];
@@ -95,6 +111,7 @@ class Program()
 
         }
 
+        // Returns the min number in a list.
         int minVal(List<int> listNum)
         {
             int min = listNum[0];
@@ -108,12 +125,14 @@ class Program()
             return min;
         }
 
+        // Returns the average of the numbers in a list.
         int avrageValues(List<int> listNum)
         {
             int avr = sumAllVal(listNum) / countVal(listNum);
             return avr;
         }
 
+        // Counts the number of elements in a list.
         int countVal(List<int> listNum)
         {
             int counter = 0;
@@ -124,6 +143,7 @@ class Program()
             return counter;
         }
 
+        // Sums the sum of all elements in a list
         int sumAllVal(List<int> listNum)
         {   
             int sum = 0;
