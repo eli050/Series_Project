@@ -6,6 +6,7 @@ class Program()
     {
         Menu();
 
+        // Number Series Menu
         void Menu()
         {
             bool checker = true;
