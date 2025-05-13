@@ -103,21 +103,37 @@ class Program()
             return stringList;
         }
 
-        // Goes through a list of strings and checks
-        // that they are all numbers
+        // validiton of list
         bool ValidationList(List<string> list)
 
+        {
+            return ValidationLen(list) && ValidatListIsPositiveNum(list);
+        }
+
+        // Goes through a list of strings and checks
+        // that they are all numbers
+        bool ValidatListIsPositiveNum(List<string> list)
         {
             bool validatList = true;
             foreach (string str in list)
             {
-                if (!int.TryParse(str, out int value) && !float.TryParse(str, out float val))
+                if ((!int.TryParse(str, out int value) || value < 0) && (!float.TryParse(str, out float val)|| val < 0))
                 {
                     validatList = false; break;
                 }
-            }
+               
+            } 
             return validatList;
         }
+
+        // chacking the len of list >= 3
+        bool ValidationLen(List<string> list)
+        {
+            return list.Count >= 3 ;
+        }
+
+        
+
 
         // Converts a list of strings to a list of numbers
         List<float> ChangeListStrToListFloat(List<string> list)
