@@ -86,16 +86,16 @@ class Program()
                     Console.WriteLine("enter a series of number: ");
                 }
                 
-                list = ChangeStrToLstr(Console.ReadLine()!);
+                list = ChangeStrToListStr(Console.ReadLine()!);
                 validatList = ValidationList(list);
             }
             while (!validatList);
-            input = ChangeLStrToLFloat(list);
+            input = ChangeListStrToListFloat(list);
             return input;
         }
 
         //Converts a string to a list of strings
-        List<string> ChangeStrToLstr(string str)
+        List<string> ChangeStrToListStr(string str)
         {
             List<string> stringList = new List<string>();
             string[] tempArr = str.Split();
@@ -120,7 +120,7 @@ class Program()
         }
 
         // Converts a list of strings to a list of numbers
-        List<float> ChangeLStrToLFloat(List<string> list)
+        List<float> ChangeListStrToListFloat(List<string> list)
         {
             List<float> floatList = new List<float>();
             foreach (string str in list)
