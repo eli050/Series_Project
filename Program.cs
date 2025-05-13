@@ -4,10 +4,68 @@ class Program()
 {
     static void Main(string[] args)
     {
-        printVal(inputSeries());
+        menu();
+
         void menu()
         {
-            List<int> series = new List<int>();
+            bool checker = true;
+            List<int> series = inputSeries();
+            do
+            {
+                printMenu();
+                string choice = Console.ReadLine()!;
+                switch (choice)
+                {
+                    case "a":
+                        series = inputSeries();
+                        break;
+
+                    case "b":
+                        printVal(series);
+                        break;
+
+                    case "c":
+                        printVal(reversedList(series));
+                        break;
+
+                    case "d":
+                        printVal(sortedList(series));
+                        break;
+
+                    case "e":
+                        Console.WriteLine(maxVal(series));
+                        break;
+
+                    case "f":
+                        Console.WriteLine(minVal(series));
+                        break;
+
+                    case "g":
+                        Console.WriteLine(avrageValues(series));
+                        break;
+
+                    case "h":
+                        Console.WriteLine(countVal(series));
+                        break;
+
+                    case "i":
+                        Console.WriteLine(sumAllVal(series));
+                        break;
+
+                    case "j":
+                        checker = false;
+                        break;
+                    
+                    default:
+                        Console.WriteLine("We don't have an option for this character yet (: Please choose again");
+                        break;
+
+
+                }
+
+            }
+            while (checker);
+          
         }
 
         // Receiving the series of numbers from a user
@@ -100,9 +158,9 @@ class Program()
         List<int> reversedList(List<int> listNum)
         {
             List<int> reversList = new List<int>();
-            for (int i = countVal(listNum); i > 0; i--)
+            for (int i = countVal(listNum) - 1; i > -1 ; i--)
             {
-                reversList.Add(i);
+                reversList.Add(listNum[i]);
             }
             return reversList;
         }
@@ -171,7 +229,7 @@ class Program()
         int countVal(List<int> listNum)
         {
             int counter = 0;
-            foreach (int item in listNum)
+            foreach (int _ in listNum)
             {
                 counter++;
             }
