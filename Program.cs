@@ -101,7 +101,7 @@ class Program()
                 }
                 else
                 {
-                    Console.WriteLine("enter a series of number: ");
+                    Console.WriteLine("enter a series of number (separate each number with a space) : ");
                 }
                 
                 list = ChangeStrToListStr(Console.ReadLine()!);
