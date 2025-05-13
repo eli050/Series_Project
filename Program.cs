@@ -4,44 +4,44 @@ class Program()
 {
     static void Main(string[] args)
     {
-        menu();
+        Menu();
 
-        void menu()
+        void Menu()
         {
             bool checker = true;
-            List<int> series = inputSeries();
+            List<int> series = InputSeries();
             do
             {
-                printMenu();
+                PrintMenu();
                 string choice = Console.ReadLine()!;
                 switch (choice)
                 {
                     case "a":
-                        series = inputSeries();
+                        series = InputSeries();
                         break;
 
                     case "b":
-                        printVal(series);
+                        PrintVal(series);
                         break;
 
                     case "c":
-                        printVal(reversedList(series));
+                        PrintVal(ReversedList(series));
                         break;
 
                     case "d":
-                        printVal(sortedList(series));
+                        PrintVal(SortedList(series));
                         break;
 
                     case "e":
-                        Console.WriteLine(maxVal(series));
+                        Console.WriteLine(MaxVal(series));
                         break;
 
                     case "f":
-                        Console.WriteLine(minVal(series));
+                        Console.WriteLine(MinVal(series));
                         break;
 
                     case "g":
-                        Console.WriteLine(avrageValues(series));
+                        Console.WriteLine(AvrageValues(series));
                         break;
 
                     case "h":
@@ -49,7 +49,7 @@ class Program()
                         break;
 
                     case "i":
-                        Console.WriteLine(sumAllVal(series));
+                        Console.WriteLine(SumAllVal(series));
                         break;
 
                     case "j":
@@ -69,7 +69,7 @@ class Program()
         }
 
         // Receiving the series of numbers from a user
-        List<int> inputSeries()
+        List<int> InputSeries()
         {
             List<string> list;
             List<int> input = new List<int>();
@@ -85,16 +85,16 @@ class Program()
                     Console.WriteLine("enter a series of number: ");
                 }
                 
-                list = changeStrToLstr(Console.ReadLine()!);
-                checker = validationList(list);
+                list = ChangeStrToLstr(Console.ReadLine()!);
+                checker = ValidationList(list);
             }
             while (!checker);
-            input = changeLStrToLInt(list);
+            input = ChangeLStrToLInt(list);
             return input;
         }
 
         //Converts a string to a list of strings
-        List<string> changeStrToLstr(string str)
+        List<string> ChangeStrToLstr(string str)
         {
             List<string> stringList = new List<string>();
             string[] tempArr = str.Split();
@@ -104,7 +104,7 @@ class Program()
 
         // Goes through a list of strings and checks
         // that they are all numbers
-        bool validationList(List<string> list)
+        bool ValidationList(List<string> list)
 
         {
             bool checker = true;
@@ -119,7 +119,7 @@ class Program()
         }
 
         // Converts a list of strings to a list of numbers
-        List<int> changeLStrToLInt(List<string> list)
+        List<int> ChangeLStrToLInt(List<string> list)
         {
             List<int> intList = new List<int>();
             foreach (string str in list)
@@ -130,7 +130,7 @@ class Program()
         }
 
         // Prints the menu
-        void printMenu()
+        void PrintMenu()
         {
             Console.WriteLine("Select one of the following options:\n" +
                 "a. Enter a new series of numbers (separate each number with a space)" +
@@ -146,7 +146,7 @@ class Program()
         }
 
         // Prints all elements in a list.
-        void printVal(List<int> listNum)
+        void PrintVal(List<int> listNum)
         {
             foreach (int item in listNum)
             {
@@ -155,7 +155,7 @@ class Program()
         }
 
         // Returns the same list in reverse
-        List<int> reversedList(List<int> listNum)
+        List<int> ReversedList(List<int> listNum)
         {
             List<int> reversList = new List<int>();
             for (int i = countVal(listNum) - 1; i > -1 ; i--)
@@ -166,7 +166,7 @@ class Program()
         }
 
         // Returns a sorted list
-        List<int> sortedList(List<int> listNum)
+        List<int> SortedList(List<int> listNum)
         {
             bool checker = true;
             List<int> sortList = new List<int>();
@@ -192,7 +192,7 @@ class Program()
         }
 
         // Returns the max number in a list.
-        int maxVal(List<int> listNum)
+        int MaxVal(List<int> listNum)
         {
             int max = listNum[0];
             for (int i = 1; i < countVal(listNum); i++)
@@ -205,7 +205,7 @@ class Program()
         }
 
         // Returns the min number in a list.
-        int minVal(List<int> listNum)
+        int MinVal(List<int> listNum)
         {
             int min = listNum[0];
             for (int i = 1; i < countVal(listNum); i++)
@@ -219,9 +219,9 @@ class Program()
         }
 
         // Returns the average of the numbers in a list.
-        int avrageValues(List<int> listNum)
+        int AvrageValues(List<int> listNum)
         {
-            int avr = sumAllVal(listNum) / countVal(listNum);
+            int avr = SumAllVal(listNum) / countVal(listNum);
             return avr;
         }
 
@@ -237,7 +237,7 @@ class Program()
         }
 
         // Sums the sum of all elements in a list
-        int sumAllVal(List<int> listNum)
+        int SumAllVal(List<int> listNum)
         {   
             int sum = 0;
             foreach(int num in listNum)
