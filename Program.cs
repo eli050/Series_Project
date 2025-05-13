@@ -9,8 +9,8 @@ class Program()
         // Number Series Menu
         void Menu()
         {
-            bool checker = true;
-            List<int> series = InputSeries();
+            bool notExit = true;
+            List<float> series = InputSeries();
             do
             {
                 PrintMenu();
@@ -54,7 +54,7 @@ class Program()
                         break;
 
                     case "j":
-                        checker = false;
+                        notExit = false;
                         break;
                     
                     default:
@@ -65,19 +65,19 @@ class Program()
                 }
 
             }
-            while (checker);
+            while (notExit);
           
         }
 
         // Receiving the series of numbers from a user
-        List<int> InputSeries()
+        List<float> InputSeries()
         {
             List<string> list;
-            List<int> input = new List<int>();
-            bool checker = true;
+            List<float> input = new List<float>();
+            bool validatList = true;
             do
             {
-                if (!checker)
+                if (!validatList)
                 {
                     Console.WriteLine("One (or more) of the characters you entered is not a number, please enter it again: ");
                 }
@@ -87,10 +87,10 @@ class Program()
                 }
                 
                 list = ChangeStrToLstr(Console.ReadLine()!);
-                checker = ValidationList(list);
+                validatList = ValidationList(list);
             }
-            while (!checker);
-            input = ChangeLStrToLInt(list);
+            while (!validatList);
+            input = ChangeLStrToLFloat(list);
             return input;
         }
 
@@ -108,26 +108,26 @@ class Program()
         bool ValidationList(List<string> list)
 
         {
-            bool checker = true;
+            bool validatList = true;
             foreach (string str in list)
             {
-                if (!int.TryParse(str, out int value))
+                if (!int.TryParse(str, out int value) && !float.TryParse(str, out float val))
                 {
-                    checker = false; break;
+                    validatList = false; break;
                 }
             }
-            return checker;
+            return validatList;
         }
 
         // Converts a list of strings to a list of numbers
-        List<int> ChangeLStrToLInt(List<string> list)
+        List<float> ChangeLStrToLFloat(List<string> list)
         {
-            List<int> intList = new List<int>();
+            List<float> floatList = new List<float>();
             foreach (string str in list)
             {
-                intList.Add(int.Parse(str));
+                floatList.Add(float.Parse(str));
             }
-            return intList;
+            return floatList;
         }
 
         // Prints the menu
@@ -147,19 +147,19 @@ class Program()
         }
 
         // Prints all elements in a list.
-        void PrintVal(List<int> listNum)
+        void PrintVal(List<float> listNum)
         {
-            foreach (int item in listNum)
+            foreach (float item in listNum)
             {
                 Console.WriteLine(item);
             }
         }
 
         // Returns the same list in reverse
-        List<int> ReversedList(List<int> listNum)
+        List<float> ReversedList(List<float> listNum)
         {
-            List<int> reversList = new List<int>();
-            for (int i = countVal(listNum) - 1; i > -1 ; i--)
+            List<float> reversList = new List<float>();
+            for (int i = countVal(listNum) - 1; i >= 0 ; i--)
             {
                 reversList.Add(listNum[i]);
             }
@@ -167,24 +167,24 @@ class Program()
         }
 
         // Returns a sorted list
-        List<int> SortedList(List<int> listNum)
+        List<float> SortedList(List<float> listNum)
         {
-            bool checker = true;
-            List<int> sortList = new List<int>();
+            bool isSorted = true;
+            List<float> sortList = new List<float>();
             for (int i = 1; i < countVal(listNum); i++)
             {
                 for (int j = 0; j < countVal(listNum) - i ; j++)
                 {
                     if (listNum[j] > listNum[j +1])
                     {
-                        int temp = listNum[j];
+                        float temp = listNum[j];
                         listNum[j] = listNum[j + 1];
                         listNum[j + 1] = temp;
-                        checker = false;
+                        isSorted = false;
 
                     }
                 }
-                if (checker)
+                if (isSorted)
                 {
                     return listNum;
                 }
@@ -193,9 +193,9 @@ class Program()
         }
 
         // Returns the max number in a list.
-        int MaxVal(List<int> listNum)
+        float MaxVal(List<float> listNum)
         {
-            int max = listNum[0];
+            float max = listNum[0];
             for (int i = 1; i < countVal(listNum); i++)
             {
                 if (listNum[i] > max)
@@ -206,9 +206,9 @@ class Program()
         }
 
         // Returns the min number in a list.
-        int MinVal(List<int> listNum)
+        float MinVal(List<float> listNum)
         {
-            int min = listNum[0];
+            float min = listNum[0];
             for (int i = 1; i < countVal(listNum); i++)
             {
                 if (listNum[i] < min)
@@ -220,17 +220,17 @@ class Program()
         }
 
         // Returns the average of the numbers in a list.
-        int AvrageValues(List<int> listNum)
+        float AvrageValues(List<float> listNum)
         {
-            int avr = SumAllVal(listNum) / countVal(listNum);
+            float avr = SumAllVal(listNum) / countVal(listNum);
             return avr;
         }
 
         // Counts the number of elements in a list.
-        int countVal(List<int> listNum)
+        int countVal(List<float> listNum)
         {
             int counter = 0;
-            foreach (int _ in listNum)
+            foreach (float _ in listNum)
             {
                 counter++;
             }
@@ -238,10 +238,10 @@ class Program()
         }
 
         // Sums the sum of all elements in a list
-        int SumAllVal(List<int> listNum)
+        float SumAllVal(List<float> listNum)
         {   
-            int sum = 0;
-            foreach(int num in listNum)
+            float sum = 0;
+            foreach(float num in listNum)
             {
                 sum += num;
             }
