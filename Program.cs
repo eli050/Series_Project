@@ -9,8 +9,26 @@ class Program()
         // Number Series Menu
         void Menu()
         {
+            List<float> series = new List<float>();
+            if (args.Length > 0)
+            {
+                List<string> TempList = args.ToList();
+                if (ValidationList(TempList))
+                {
+                    series = ChangeListStrToListFloat(TempList);
+                }
+                else
+                {
+                    series = InputSeries();
+                }
+            }
+            else
+            {
+                 series = InputSeries();
+            }
+
             bool notExit = true;
-            List<float> series = InputSeries();
+
             do
             {
                 PrintMenu();
@@ -270,4 +288,3 @@ class Program()
     }
 
 }
-
