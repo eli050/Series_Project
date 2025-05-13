@@ -4,6 +4,7 @@ class Program()
 {
     static void Main(string[] args)
     {
+        printVal(inputSeries());
         void menu()
         {
             List<int> series = new List<int>();
@@ -14,10 +15,18 @@ class Program()
         {
             List<string> list;
             List<int> input = new List<int>();
-            bool checker;
+            bool checker = true;
             do
             {
-                Console.WriteLine("enter a series numbers: ");
+                if (!checker)
+                {
+                    Console.WriteLine("One (or more) of the characters you entered is not a number, please enter it again: ");
+                }
+                else
+                {
+                    Console.WriteLine("enter a series of number: ");
+                }
+                
                 list = changeStrToLstr(Console.ReadLine()!);
                 checker = validationList(list);
             }
