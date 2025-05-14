@@ -204,26 +204,26 @@ class Program()
         List<float> SortedList(List<float> listNum)
         {
             bool isSorted = true;
-            List<float> sortList = new List<float>();
-            for (int i = 1; i < countVal(listNum); i++)
+            List<float> sortList = new List<float>(listNum);
+            for (int i = 1; i < countVal(sortList); i++)
             {
-                for (int j = 0; j < countVal(listNum) - i ; j++)
+                for (int j = 0; j < countVal(sortList) - i ; j++)
                 {
-                    if (listNum[j] > listNum[j +1])
+                    if (sortList[j] > sortList[j +1])
                     {
-                        float temp = listNum[j];
-                        listNum[j] = listNum[j + 1];
-                        listNum[j + 1] = temp;
+                        float temp = sortList[j];
+                        sortList[j] = sortList[j + 1];
+                        sortList[j + 1] = temp;
                         isSorted = false;
 
                     }
                 }
                 if (isSorted)
                 {
-                    return listNum;
+                    return sortList;
                 }
             }
-            return listNum;
+            return sortList;
         }
 
         // Returns the max number in a list.
